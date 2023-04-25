@@ -98,6 +98,10 @@ static int minsLast = 0;
 static int hoursLast = 0;
 static int daysLast = 0;
 static uint32_t u32LastMillis = 0;
+static uint8_t u8StateMachine = 0;
+static uint32_t u32LightShowCounter = 0;
+static uint32_t u32DemoCounter = 0;
+
 
 #if defined(ARDUINO_ARCH_ESP8266)
 static ESP8266WebServer webServer(80);
@@ -188,14 +192,27 @@ void RunEveryDay(uint8_t u8Hours, uint8_t u8Minutes) {
 
 void LightShow()
 {
-    static uint32_t u32Counter = 0;
-    static uint8_t u8StateMachine = 0;
-    u32Counter++;
-
-    if ((u32Counter % 25000) == 0)
+    static bool bOldButton = false;
+    if (LIoTBoard.getButtonPressed() != bOldButton)
     {
-       u8StateMachine++;
+        bOldButton = LIoTBoard.getButtonPressed();
+        delay(50);
+        if (bOldButton)
+        {
+            u8StateMachine++;
+        }
+        u32DemoCounter = 30000;
     }
+
+    if (u32LightShowCounter == 0)
+    {
+       if (u32DemoCounter == 0)
+       {
+           u8StateMachine++;
+           u32LightShowCounter = 1000;
+       }
+    }
+
     switch(u8StateMachine)
     {
         case 1:
@@ -216,14 +233,28 @@ void LightShow()
         case 6:
           LIoTBoard.setLed("purple");
           break;
+        default:
+          u8StateMachine = 1;
+          break;
     }
 }
 
+void diffUpdate(uint32_t* pu32Count, uint32_t u32Diff)
+{
+    if (*pu32Count > u32Diff)
+    {
+        *pu32Count -= u32Diff;
+    } else
+    {
+        *pu32Count = 0;
+    }
+}
 
 void loop() {
   bool bMinuteUpdated = false;
   bool bHourUpdated = false;
   bool bDayUpdated = false;
+  uint32_t u32Diff;
 
 #if defined(USE_TIME_FUNCTIONS)
   DateTimeParts parts = DateTime.getParts();
@@ -237,10 +268,14 @@ void loop() {
   AppWebServer_Update();
   Esp32Wifi_Update();
   AppWebServer_Update();
-  LIoTBoard_Update();
+  LIoTBoard.update();
 
-  if (u32LastMillis != millis()) {
-    u32LastMillis = millis();
+  u32Diff = millis() - u32LastMillis;
+  if (u32Diff != 0) 
+  {
+      diffUpdate(&u32LightShowCounter, u32Diff);
+      diffUpdate(&u32DemoCounter, u32Diff);
+      u32LastMillis = millis();
   }
 
 #if defined(USE_TIME_FUNCTIONS)
