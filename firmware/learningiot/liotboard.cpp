@@ -111,9 +111,9 @@ StaticJsonDocument<256> doc;
 static void handleAPI(void);
 static void InitializeBoardHW(void);
 #if defined(ARDUINO_ARCH_ESP8266)
-  static void InitializeRestApi(ESP8266WebServer* pWebServer)
+  static void InitializeRestApi(ESP8266WebServer* pWebServer);
 #else
-  static void InitializeRestApi(WebServer* pWebServer)
+  static void InitializeRestApi(WebServer* pWebServer);
 #endif
 
 /**
@@ -209,7 +209,7 @@ static void InitializeBoardHW(void)
 #endif
 {
     InitializeBoardHW();
-    InitializeRestApi(pWebServer)
+    InitializeRestApi(pWebServer);
 }
 
 
