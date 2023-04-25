@@ -159,6 +159,8 @@ namespace liotboard {
 
     void setLed(en_liot_board_led_color_t enColor);
 
+    void setLed(const char* strColor);
+
     void setLed(String strColor);
 
     void setLed(bool bRed, bool bGreen, bool bBlue);

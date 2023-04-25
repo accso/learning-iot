@@ -56,14 +56,14 @@
 #define BUTTON      0 // D3
 
 const char* strColors[8] = {
-  "Black",   //0
-  "Red",     //1
-  "Green",   //2
-  "Yellow",  //3
-  "Blue",    //4
-  "Purple",  //5
-  "Cyan",    //6
-  "White"    //7
+  "black",   //0
+  "red",     //1
+  "green",   //2
+  "yellow",  //3
+  "blue",    //4
+  "purple",  //5
+  "cyan",    //6
+  "white"    //7
 };
 
 
@@ -111,9 +111,9 @@ StaticJsonDocument<256> doc;
 static void handleAPI(void);
 static void InitializeBoardHW(void);
 #if defined(ARDUINO_ARCH_ESP8266)
-  static void InitializeRestApi(ESP8266WebServer* pWebServer)
+  static void InitializeRestApi(ESP8266WebServer* pWebServer);
 #else
-  static void InitializeRestApi(WebServer* pWebServer)
+  static void InitializeRestApi(WebServer* pWebServer);
 #endif
 
 /**
@@ -209,7 +209,7 @@ static void InitializeBoardHW(void)
 #endif
 {
     InitializeBoardHW();
-    InitializeRestApi(pWebServer)
+    InitializeRestApi(pWebServer);
 }
 
 
@@ -440,6 +440,11 @@ namespace liotboard {
   void LearningIotBoardClass::setLed(en_liot_board_led_color_t enColor)
   {
       LIoTBoard_SetLedColor( enColor);
+  }
+
+  void LearningIotBoardClass::setLed(const char* strColor)
+  {
+      LIoTBoard_SetLedColorString(strColor);
   }
 
   void LearningIotBoardClass::setLed(String strColor)
