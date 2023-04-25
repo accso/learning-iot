@@ -11,6 +11,7 @@ profiles:
       - ESP8266mDNS (1.2)
       - EEPROM (1.0)
       - DNSServer (1.1.1)
+      - ArduinoJson (6.21.1)
   esp32:
     notes: Default profile for Arduino-CI
     fqbn: esp32:esp32:esp32:PartitionScheme=min_spiffs,UploadSpeed=115200
@@ -25,3 +26,4 @@ profiles:
       - SPIFFS (1.0)
       - DNSServer (1.1.0)
       - Update (1.0)
+      - ArduinoJson (6.21.1)
