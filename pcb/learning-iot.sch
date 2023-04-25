@@ -1,0 +1,211 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Accso - Learning IoT"
+Date "2023-04-04"
+Rev "1.0"
+Comp "Accso - Accelerated Solution GmbH"
+Comment1 "https://accso.de/liot"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:WeMos_D1_mini U1
+U 1 1 642A9E6A
+P 4650 3900
+F 0 "U1" H 4250 4700 50  0000 C CNN
+F 1 "WeMos_D1_mini" H 5000 3150 50  0000 C CNN
+F 2 "Module:WEMOS_D1_mini_light" H 4650 2750 50  0001 C CNN
+F 3 "https://wiki.wemos.cc/products:d1:d1_mini#documentation" H 2800 2750 50  0001 C CNN
+	1    4650 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 642B19E1
+P 5850 3500
+F 0 "R1" V 5800 3650 50  0000 C CNN
+F 1 "330" V 5950 3500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5780 3500 50  0001 C CNN
+F 3 "~" H 5850 3500 50  0001 C CNN
+	1    5850 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 642B8463
+P 7150 3850
+F 0 "R4" H 7220 3896 50  0000 L CNN
+F 1 "10k" H 7220 3805 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7080 3850 50  0001 C CNN
+F 3 "~" H 7150 3850 50  0001 C CNN
+	1    7150 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 4000 7150 4050
+$Comp
+L Switch:SW_Push SW1
+U 1 1 642C5DDC
+P 7150 4450
+F 0 "SW1" V 7104 4598 50  0000 L CNN
+F 1 "SW_Push" V 7195 4598 50  0000 L CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm_H4.3mm" H 7150 4650 50  0001 C CNN
+F 3 "~" H 7150 4650 50  0001 C CNN
+	1    7150 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR05
+U 1 1 642C784A
+P 7150 4650
+F 0 "#PWR05" H 7150 4400 50  0001 C CNN
+F 1 "GND" H 7155 4477 50  0000 C CNN
+F 2 "" H 7150 4650 50  0001 C CNN
+F 3 "" H 7150 4650 50  0001 C CNN
+	1    7150 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR03
+U 1 1 642C8ACB
+P 7150 3150
+F 0 "#PWR03" H 7150 3000 50  0001 C CNN
+F 1 "+3V3" H 7165 3323 50  0000 C CNN
+F 2 "" H 7150 3150 50  0001 C CNN
+F 3 "" H 7150 3150 50  0001 C CNN
+	1    7150 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7150 3150 7150 3700
+$Comp
+L power:GND #PWR04
+U 1 1 642CA625
+P 6550 4650
+F 0 "#PWR04" H 6550 4400 50  0001 C CNN
+F 1 "GND" H 6555 4477 50  0000 C CNN
+F 2 "" H 6550 4650 50  0001 C CNN
+F 3 "" H 6550 4650 50  0001 C CNN
+	1    6550 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 642CB01D
+P 4650 4700
+F 0 "#PWR01" H 4650 4450 50  0001 C CNN
+F 1 "GND" H 4650 4450 50  0000 C CNN
+F 2 "" H 4650 4700 50  0001 C CNN
+F 3 "" H 4650 4700 50  0001 C CNN
+	1    4650 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR02
+U 1 1 642CBA52
+P 4750 3100
+F 0 "#PWR02" H 4750 2950 50  0001 C CNN
+F 1 "+3V3" H 4765 3273 50  0000 C CNN
+F 2 "" H 4750 3100 50  0001 C CNN
+F 3 "" H 4750 3100 50  0001 C CNN
+	1    4750 3100
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4250 3500
+NoConn ~ 4250 3800
+NoConn ~ 4250 3900
+NoConn ~ 4550 3100
+NoConn ~ 5050 4200
+NoConn ~ 5050 4100
+NoConn ~ 5050 4000
+NoConn ~ 5050 3700
+NoConn ~ 5050 3600
+NoConn ~ 5050 3400
+Wire Wire Line
+	5050 3500 5700 3500
+Wire Wire Line
+	6000 3700 6050 3700
+Wire Wire Line
+	6050 3500 6000 3500
+$Comp
+L Device:LED_GRCB D1
+U 1 1 642BB261
+P 6250 3700
+F 0 "D1" H 6050 4000 50  0000 C CNN
+F 1 "LED_GRCB" H 6250 4106 50  0000 C CNN
+F 2 "learning-iot:LEDLL5-8000RGB" H 6250 3650 50  0001 C CNN
+F 3 "https://cdn-reichelt.de/documents/datenblatt/A500/LEDLL58000RGB.pdf" H 6250 3650 50  0001 C CNN
+	1    6250 3700
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	6050 3900 6000 3900
+Wire Wire Line
+	6550 3700 6450 3700
+Wire Wire Line
+	6550 3700 6550 4650
+Wire Wire Line
+	5050 3800 5150 3800
+Wire Wire Line
+	5150 3800 5150 4050
+Wire Wire Line
+	5150 4050 7150 4050
+Connection ~ 7150 4050
+Wire Wire Line
+	7150 4050 7150 4250
+Text Label 6800 4050 0    50   ~ 0
+GPIO0
+Text Notes 6650 4050 0    50   ~ 0
+D3
+$Comp
+L Device:R R2
+U 1 1 642AB97B
+P 5850 3700
+F 0 "R2" V 5800 3850 50  0000 C CNN
+F 1 "330" V 5950 3700 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5780 3700 50  0001 C CNN
+F 3 "~" H 5850 3700 50  0001 C CNN
+	1    5850 3700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5050 3900 5250 3900
+Wire Wire Line
+	5250 3900 5250 3700
+Wire Wire Line
+	5250 3700 5700 3700
+$Comp
+L Device:R R3
+U 1 1 642AE3B5
+P 5850 3900
+F 0 "R3" V 5800 4050 50  0000 C CNN
+F 1 "330" V 5950 3900 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5780 3900 50  0001 C CNN
+F 3 "~" H 5850 3900 50  0001 C CNN
+	1    5850 3900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5050 4300 5350 4300
+Wire Wire Line
+	5350 4300 5350 3900
+Wire Wire Line
+	5350 3900 5700 3900
+Text Notes 5300 3500 0    50   ~ 0
+D0
+Text Notes 5300 3700 0    50   ~ 0
+D4
+Text Notes 5300 3900 0    50   ~ 0
+D8
+Text Label 5450 3500 0    50   ~ 0
+GPIO16
+Text Label 5450 3900 0    50   ~ 0
+GPIO15
+Text Label 5450 3700 0    50   ~ 0
+GPIO2
+$EndSCHEMATC
