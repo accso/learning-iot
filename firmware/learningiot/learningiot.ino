@@ -90,9 +90,9 @@
  *******************************************************************************
  */
 
-const char *ssidAp = "MyEspConfigAP";
-const char *passwordAp = "MyEspConfigAP";
-const char *hostName = "my-esp";
+const char *ssidAp = "Accso Learning IoT";
+const char *passwordAp = "Accso Learning IoT";
+const char *hostName = "accso-learning-iot";
 
 static int minsLast = 0;
 static int hoursLast = 0;
@@ -171,7 +171,7 @@ void setup() {
 #endif
 
   MDNS.addService("http", "tcp", 80);
-  MDNS.addService("my-esp", "tcp", 80);
+  MDNS.addService("accso-learning-iot", "tcp", 80);
 
   //add your initial stuff here
 }
