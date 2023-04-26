@@ -50,6 +50,29 @@ All components can be ordered at http://reichelt.de
 8) Solder the pin headers (male) downwards <br><img src="images/pins.jpg" width="250">
 9) Solder the pin headers (female) on top of D1 mini, so the shield can be put on top. <br><img src="images/d1mini-pins.jpg" width="250"><br><img src="images/assembly.png" width="250">
 
+## Flashing firmware
+
+See the latest release at the release page of Github!
+
+**Install Firmware:**
+```
+pip3 install esptool
+python3 -m esptool --port /dev/tty.usbserial-1440 --baud 115200 erase_flash 
+python3 -m esptool --port /dev/tty.SLAB_USBtoUART --baud 115200 write_flash 0x0 firmware-v1.0-esp8266_learning-iot.bin
+```
+
+**WiFi-AP:**
+SSID: Accso Learning IoT
+Key: Accso Learning IoT
+
+**URL**
+http://192.168.4.1
+http://accso-learning-iot.local
+
+**Config-Area:**
+User: admin
+Password: admin
+
 ## SW API
 
 ### Initialize Board
@@ -66,14 +89,14 @@ LIoTBoard.begin(&webServer);
 void LIoTBoard.setLed(String color);
 
 color: Color as string. Can be:
- - "Black"
- - "Red"
- - "Green"
- - "Yellow"
- - "Blue"
- - "Purple"
- - "Cyan"
- - "White"
+ - "black"
+ - "red"
+ - "green"
+ - "yellow"
+ - "blue"
+ - "purple"
+ - "cyan"
+ - "white"
 ```
 
 ```

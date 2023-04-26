@@ -468,6 +468,22 @@ code {
 <li>Solder the pin headers (male) downwards <br><img src="images/pins.jpg" width="250"></li>
 <li>Solder the pin headers (female) on top of D1 mini, so the shield can be put on top. <br><img src="images/d1mini-pins.jpg" width="250"><br><img src="images/assembly.png" width="250"></li>
 </ol>
+<h2 id="flashing-firmware">Flashing firmware</h2>
+<p>See the latest release at the release page of Github!</p>
+<p><strong>Install Firmware:</strong></p>
+<pre class="hljs"><code><div>pip3 install esptool
+python3 -m esptool --port /dev/tty.usbserial-1440 --baud 115200 erase_flash 
+python3 -m esptool --port /dev/tty.SLAB_USBtoUART --baud 115200 write_flash 0x0 firmware-v1.0-esp8266_learning-iot.bin
+</div></code></pre>
+<p><strong>WiFi-AP:</strong><br>
+SSID: Accso Learning IoT<br>
+Key: Accso Learning IoT</p>
+<p><strong>URL</strong><br>
+http://192.168.4.1<br>
+http://accso-learning-iot.local</p>
+<p><strong>Config-Area:</strong><br>
+User: admin<br>
+Password: admin</p>
 <h2 id="sw-api">SW API</h2>
 <h3 id="initialize-board">Initialize Board</h3>
 <p>To initialize the Learning IoT Board requires as parameter the pointer to the web server handling REST-API calls.</p>
@@ -477,14 +493,14 @@ code {
 <pre class="hljs"><code><div>void LIoTBoard.setLed(String color);
 
 color: Color as string. Can be:
- - &quot;Black&quot;
- - &quot;Red&quot;
- - &quot;Green&quot;
- - &quot;Yellow&quot;
- - &quot;Blue&quot;
- - &quot;Purple&quot;
- - &quot;Cyan&quot;
- - &quot;White&quot;
+ - &quot;black&quot;
+ - &quot;red&quot;
+ - &quot;green&quot;
+ - &quot;yellow&quot;
+ - &quot;blue&quot;
+ - &quot;purple&quot;
+ - &quot;cyan&quot;
+ - &quot;white&quot;
 </div></code></pre>
 <pre class="hljs"><code><div>void LIoTBoard.setLed(bool bRed, bool bGreen, bool bBlue);
 

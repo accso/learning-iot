@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="learning-iot">Learning IoT</h1>
+<p>Goody for Building IoT in Munich 25. - 27. April 2023.</p>
+<h2 id="images-pcb">Images PCB</h2>
+<img src="images/pcb-learning-iot-top.png" height="250">
+<img src="images/pcb-learning-iot-back.png" height="250">
+<h2 id="pin-list">Pin List</h2>
+<img src="images/pin-list.jpg" width="250">
+<table>
+<thead>
+<tr>
+<th>GPIO</th>
+<th>Pin</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO0</td>
+<td>D3</td>
+<td>Button / SW1</td>
+</tr>
+<tr>
+<td>GPIO2</td>
+<td>D4</td>
+<td>LED Green</td>
+</tr>
+<tr>
+<td>GPIO15</td>
+<td>D8</td>
+<td>LED Blue</td>
+</tr>
+<tr>
+<td>GPIO16</td>
+<td>D0</td>
+<td>LED Red</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bill-of-materials-bom">Bill of Materials (BOM)</h2>
+<img src="images/bom.jpg" width="250">
+<p>All components can be ordered at http://reichelt.de</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>Order Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>1</td>
+<td>LED LL 5-8000RGBRGB-LED</td>
+<td>5 mm, bedrahtet, 4-Pin, rt/gn/bl, 8000 mcd, 25°</td>
+</tr>
+<tr>
+<td>SW1</td>
+<td>1</td>
+<td>TASTER 3301</td>
+<td>Kurzhubtaster 6x6mm, Höhe: 4,3mm, 12V, vertikal</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>2</td>
+<td>MPE 087-1-008</td>
+<td>Stiftleisten 2,54 mm, 1X08, gerade</td>
+</tr>
+<tr>
+<td>R4</td>
+<td>1</td>
+<td>1/4W 10K</td>
+<td>Widerstand, Kohleschicht, 10 kOhm, 0207, 250 mW, 5</td>
+</tr>
+<tr>
+<td>R1-3</td>
+<td>3</td>
+<td>1/4W 300</td>
+<td>Widerstand, Kohleschicht, 300 Ohm, 0207, 250 mW, 5%</td>
+</tr>
+<tr>
+<td></td>
+<td>1</td>
+<td>ESD BEUTEL-S 127</td>
+<td>ESD PE-Abschirmbeutel, wiederverschließbar, 76 x 127 mm</td>
+</tr>
+</tbody>
+</table>
+<h2 id="schematic">Schematic</h2>
+<p><a href="schematic-accso-learning-iot-v1.0.pdf"><img src="images/schematic.png" width="250"></a></p>
+<h2 id="assembly">Assembly</h2>
+<ol>
+<li>Bend the wires of the resistors by 90° <br><img src="images/resistor-90-bending.jpg" width="250"></li>
+<li>Put the resistors through the holes (R4 is 10k while R1-3 is 330 Ohms)  <br><img src="images/resistor-values.jpg" width="250"></li>
+<li>Bend the wires by 30° and cut the pins, so 1mm wire is still visible from the bottom <br><img src="images/resistor-30-bending.jpg" height="250"> <img src="images/resistor-cut.jpg" height="250"> <img src="images/resistor-cut2.jpg" height="250"></li>
+<li>Put the tactile button through the holes as described in following picture <br><img src="images/button-assembly.png" width="250"></li>
+<li>Put the LEDs through the holes with the flatted side pointed in direction of the push button</li>
+<li>Bend the outer wires by 30° and cut all wires, so 1mm wire is still visible from the bottom <br><img src="images/led.jpg" width="250"></li>
+<li>Solder all components <br><img src="images/solder.jpg" width="250"></li>
+<li>Solder the pin headers (male) downwards <br><img src="images/pins.jpg" width="250"></li>
+<li>Solder the pin headers (female) on top of D1 mini, so the shield can be put on top. <br><img src="images/d1mini-pins.jpg" width="250"><br><img src="images/assembly.png" width="250"></li>
+</ol>
+<h2 id="flashing-firmware">Flashing firmware</h2>
+<p>See the latest release at the release page of Github!</p>
+<p><strong>Install Firmware:</strong></p>
+<pre class="hljs"><code><div>pip3 install esptool
+python3 -m esptool --port /dev/tty.usbserial-1440 --baud 115200 erase_flash 
+python3 -m esptool --port /dev/tty.SLAB_USBtoUART --baud 115200 write_flash 0x0 firmware-v1.0-esp8266_learning-iot.bin
+</div></code></pre>
+<p><strong>WiFi-AP:</strong><br>
+SSID: Accso Learning IoT<br>
+Key: Accso Learning IoT</p>
+<p><strong>URL</strong><br>
+http://192.168.4.1<br>
+http://accso-learning-iot.local</p>
+<p><strong>Config-Area:</strong><br>
+User: admin<br>
+Password: admin</p>
+<h2 id="sw-api">SW API</h2>
+<h3 id="initialize-board">Initialize Board</h3>
+<p>To initialize the Learning IoT Board requires as parameter the pointer to the web server handling REST-API calls.</p>
+<pre class="hljs"><code><div>LIoTBoard.begin(&amp;webServer);
+</div></code></pre>
+<h3 id="setting-leds">Setting LEDs</h3>
+<pre class="hljs"><code><div>void LIoTBoard.setLed(String color);
+
+color: Color as string. Can be:
+ - &quot;black&quot;
+ - &quot;red&quot;
+ - &quot;green&quot;
+ - &quot;yellow&quot;
+ - &quot;blue&quot;
+ - &quot;purple&quot;
+ - &quot;cyan&quot;
+ - &quot;white&quot;
+</div></code></pre>
+<pre class="hljs"><code><div>void LIoTBoard.setLed(bool bRed, bool bGreen, bool bBlue);
+
+bRed: LED red true = on, false = off
+
+bGreen: LED green true = on, false = off
+
+bBlue: LED blue true = on, false = off
+</div></code></pre>
+<h3 id="read-button">Read button</h3>
+<pre class="hljs"><code><div>bool LIoTBoard.getButtonPressed(void);
+
+returns: true if button pressed and false if button is released
+</div></code></pre>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="driving-led-without-board-support">Driving LED without board support</h3>
+<p><a href="firmware/examples/basic/basic.ino">basic.ino</a></p>
+<pre class="hljs"><code><div>#define LED_RED    16 // D0
+#define LED_GREEN   2 // D4
+#define LED_BLUE   15 // D8
+#define BUTTON      0 // D3
+
+void setup(void)
+{
+    pinMode(LED_RED,OUTPUT);
+    pinMode(LED_GREEN,OUTPUT);
+    pinMode(LED_BLUE,OUTPUT);
+    pinMode(BUTTON,INPUT);
+}
+
+void loop(void)
+{
+    // blink red LED
+    digitalWrite(LED_RED,HIGH);
+    delay(500);
+    digitalWrite(LED_RED,LOW);
+    delay(500);
+
+    // blink green LED
+    digitalWrite(LED_GREEN,HIGH);
+    delay(500);
+    digitalWrite(LED_GREEN,LOW);
+    delay(500);
+
+    // blink blue LED
+    digitalWrite(LED_BLUE,HIGH);
+    delay(500);
+    digitalWrite(LED_BLUE,LOW);
+    delay(500);
+
+    // wait for button pressed (blocking)
+    while(digitalRead(BUTTON))
+    {
+        delay(1);
+    }
+}
+</div></code></pre>
+<h3 id="driving-led-with-board-support">Driving LED with board support</h3>
+<p><a href="firmware/examples/board-support/board-support.ino">board-support.ino</a></p>
+<pre class="hljs"><code><div># requires to add liotboard.h and liotboard.cpp to the project
+#include &quot;liotboard.h&quot;
+
+void setup(void)
+{
+    LIoTBoard.begin();
+
+    LIoTBoard.setLed(&quot;red&quot;);
+}
+
+void loop(void)
+{
+    LIoTBoard.update();
+    if (LIoTBoard.getButtonPressed())
+    {
+        LIoTBoard.setLed(&quot;green&quot;);
+    } else
+    {
+        LIoTBoard.setLed(&quot;red&quot;);
+    }
+}
+</div></code></pre>
+<h3 id="rest-api-example">REST API Example</h3>
+<p>POST data with JSON content /api/status:</p>
+<ul>
+<li>&quot;red&quot;: LED Red, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;green&quot;: LED Green, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;blue&quot;: LED Blue, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;button&quot;: Button change overwrite, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+</ul>
+<p>GET data as JSON format /api/status:</p>
+<ul>
+<li>&quot;red&quot;: LED Red, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;green&quot;: LED Green, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;blue&quot;: LED Blue, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+<li>&quot;button&quot;: Button status, allowed values: &quot;true&quot; or &quot;false&quot;</li>
+</ul>
+<p><a href="firmware/examples/restapi/restapi.ino">restapi.ino</a></p>
+<pre class="hljs"><code><div>#include &lt;ESP8266WiFi.h&gt;
+#include &lt;WiFiClient.h&gt;
+#include &lt;ESP8266WebServer.h&gt;
+#include &lt;ESP8266mDNS.h&gt;
+
+# requires to add liotboard.h and liotboard.cpp to the project
+#include &quot;liotboard.h&quot;
+
+#ifndef STASSID
+#define STASSID &quot;your-ssid&quot;
+#define STAPSK &quot;your-password&quot;
+#endif
+
+const char* ssid = STASSID;
+const char* password = STAPSK;
+
+ESP8266WebServer server(80);
+
+
+void handleRoot() {
+  server.send(200, &quot;text/plain&quot;, &quot;hello from esp8266!\r\n&quot;);
+}
+
+void setup(void) {
+  Serial.begin(115200);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  Serial.println(&quot;&quot;);
+
+  // Wait for connection
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(&quot;.&quot;);
+  }
+  Serial.println(&quot;&quot;);
+  Serial.print(&quot;Connected to &quot;);
+  Serial.println(ssid);
+  Serial.print(&quot;IP address: &quot;);
+  Serial.println(WiFi.localIP());
+
+  if (MDNS.begin(&quot;esp8266&quot;)) { Serial.println(&quot;MDNS responder started&quot;); }
+
+  LIoTBoard.begin(&amp;server);
+  server.on(&quot;/&quot;, handleRoot);
+
+  server.begin();
+  Serial.println(&quot;HTTP server started&quot;);
+}
+
+void loop(void) {
+  server.handleClient();
+  MDNS.update();
+}
+</div></code></pre>
+
+</body>
+</html>
